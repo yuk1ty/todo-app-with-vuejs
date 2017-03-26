@@ -8,7 +8,7 @@
       <label>Deadline</label>
       <md-input v-model="deadline"></md-input>
     </md-input-container>
-    <md-button class="md-raised md-primary">Add Task</md-button>
+    <md-button class="md-raised md-primary" @click.native="addTask()">Add Task</md-button>
   </form>
 </template>
 
@@ -18,6 +18,15 @@ export default {
     return {
       task: '',
       deadline: ''
+    }
+  },
+  methods: {
+    addTask: function() {
+      let self = this
+      this.$store.state.tasks.push({
+        task: self.task,
+        deadline: self.deadline
+      })
     }
   }
 }

@@ -8,11 +8,13 @@
       <label>Deadline</label>
       <md-input v-model="deadline"></md-input>
     </md-input-container>
-    <md-button class="md-raised md-primary" @click.native="addTask()">Add Task</md-button>
+    <md-button class="md-raised md-primary" @click.native="add({ task: task, deadline: deadline })">Add Task</md-button>
   </form>
 </template>
 
 <script>
+import { mapMutations } from 'vuex'
+
 export default {
   data() {
     return {
@@ -20,14 +22,8 @@ export default {
       deadline: ''
     }
   },
-  methods: {
-    addTask: function() {
-      let self = this
-      this.$store.state.tasks.push({
-        task: self.task,
-        deadline: self.deadline
-      })
-    }
-  }
+  methods: mapMutations([
+      'add'
+    ])
 }
 </script>

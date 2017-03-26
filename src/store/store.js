@@ -7,7 +7,7 @@ const state = {
   tasks: []
 }
 const action = {
-  add({ commit }, task) {
+  addTask: ({ commit }, task) => {
     commit('add', task)
   }
 }
@@ -18,7 +18,7 @@ const getters = {
   }
 }
 const mutations = {
-  add(task) {
+  add(state, task) {
     state.tasks.push(task)
   }
 }
